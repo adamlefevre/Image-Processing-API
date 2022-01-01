@@ -1,5 +1,5 @@
 import express from 'express';
-import convert from './convert';
+import convert from './api/convert';
 
 const routes = express.Router();
 
@@ -8,5 +8,9 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/convert', convert);
+
+routes.post('/convert', convert);
+
+routes.put('/convert', convert);
 
 export default routes;

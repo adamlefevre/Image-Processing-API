@@ -14,11 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
 const index_1 = __importDefault(require("../index"));
+const fs_1 = require("fs");
 const request = (0, supertest_1.default)(index_1.default);
 describe('Test convert functionality', () => {
-    it('Resolves convert page', (done) => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/convert');
+    it('Resolves convert', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/');
         expect(response.status).toBe(200);
-        done();
+    }));
+    it('Moves file to local storage', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield request.post('/convert');
+        const jpgToBeProcessed = (0, fs_1.readFileSync)('public/thumbnail/fjord.jpg');
+        expect(jpgToBeProcessed).not.toBeFalsy();
     }));
 });

@@ -14,18 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
 const index_1 = __importDefault(require("../index"));
-const fjordPath = '../../input/upload/fjord.jpg';
 const request = (0, supertest_1.default)(index_1.default);
 describe('Test homepage functionality', () => {
     it('Resolves homepage', () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/');
         expect(response.status).toBe(200);
     }));
-    it('Resolves convert', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/convert');
-        expect(response.status).toBe(200);
-    }));
-    it('Moves file to local storage', () => {
-        expect(fjordPath).not.toBeFalsy();
-    });
 });
