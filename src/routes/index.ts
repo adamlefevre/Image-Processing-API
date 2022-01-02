@@ -1,16 +1,12 @@
-import express from 'express';
-import convert from './api/convert';
+import resizePhoto from '../controllers/resizePhoto';
+import { Router, Request, Response } from 'express';
 
-const routes = express.Router();
+const routers = Router();
 
-routes.get('/', (req, res) => {
-  res.send('Home page.');
+routers.get('/', (req: Request, res: Response) => {
+  res.send('Home page');
 });
 
-routes.get('/convert', convert);
+routers.get('/resizePhoto', resizePhoto);
 
-routes.post('/convert', convert);
-
-routes.put('/convert', convert);
-
-export default routes;
+export default routers;
